@@ -1,0 +1,2 @@
+yahoo-fantasy-api==2.4.1
+yahoo-oauth==1.1
