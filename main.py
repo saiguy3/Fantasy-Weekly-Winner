@@ -136,5 +136,5 @@ def pretty_print(title, items):
 
 print("***", league_name, "-- WEEK", WEEK, " ***", end="\n\n")
 pretty_print("Stats", teams.items())
-pretty_print("Wins", sorted(wins.items(), key=lambda x: x[1], reverse=True))
-pretty_print("Total", sorted(total_record.items(), key=lambda x: x[1][0], reverse=True))
+pretty_print("Total", sorted(total_record.items(), key=lambda x: (x[1][0], -x[1][1]), reverse=True))
+pretty_print("Wins", sorted(wins.items(), key=lambda x: (x[1], total_record[x[0]][0], -total_record[x[0]][1]), reverse=True))
