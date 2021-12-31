@@ -101,7 +101,7 @@ matchups = response[1]["scoreboard"]["0"]["matchups"]
 
 current_week = int(response[0]["current_week"])
 if not (0 < int(WEEK) <= current_week):
-    raise ValueError(f"Week needs to be > 1 and <= current week ({current_week})")
+    raise ValueError(f"Week needs to be >= 1 and <= current week ({current_week})")
 
 
 # 2. DIGEST STATS INFO INTO TEAMS DICT
