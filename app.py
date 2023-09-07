@@ -1,9 +1,9 @@
-import os
+import json
+from tempfile import NamedTemporaryFile
 from typing import Any, Callable, Dict, List
 
 import pandas as pd
 import streamlit as st
-from dotenv import load_dotenv
 
 from league import LeagueMetadata, YahooLeague
 
@@ -27,10 +27,16 @@ def print_obj_map(
 
 
 def main():
-    load_dotenv()
-    league_type = os.getenv("LEAGUE_TYPE")
-    league_id = os.getenv("LEAGUE_ID")
-    yl = YahooLeague("private.json", LeagueMetadata(league_type=league_type, league_id=league_id))
+    with NamedTemporaryFile(suffix=".json") as auth_file:
+        yahoo_auth = st.secrets["YAHOO_AUTH"].to_dict()
+        auth_file.write(bytes(json.dumps(yahoo_auth).encode("utf-8")))
+        auth_file.seek(0)  # reset for read
+
+        league_type = st.secrets["LEAGUE_TYPE"]
+        league_id = st.secrets["LEAGUE_ID"]
+        metadata = LeagueMetadata(league_type=league_type, league_id=league_id)
+
+        yl = YahooLeague(auth_file.name, metadata)
 
     st.markdown("# Fantasy Basketball Weekly Scoring")
 

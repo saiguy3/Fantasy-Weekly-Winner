@@ -1,4 +1,5 @@
 # Misc
+secrets.toml
 private.json
 .vscode
 .DS_Store
