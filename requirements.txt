@@ -1,2 +1,6 @@
-yahoo-fantasy-api==2.4.1
-yahoo-oauth==1.1
+pandas==2.0.3
+pydantic==2.3.0
+python-dotenv==1.0.0
+streamlit==1.26.0
+yahoo-fantasy-api==2.6.0
+yahoo-oauth==2.0
