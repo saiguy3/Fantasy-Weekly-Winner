@@ -139,7 +139,7 @@ class YahooLeague:
 
         all_pos_matchups = list(itertools.combinations(teams, 2))
         for t1_name, t2_name in all_pos_matchups:
-            winner, t1_record, t2_record = self._simulate_matchup(t1_name, t2_name)
+            winner, t1_record, t2_record = self._simulate_matchup(teams, t1_name, t2_name)
 
             if winner:
                 win_record[winner][0] += 1

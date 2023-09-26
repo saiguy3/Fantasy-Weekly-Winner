@@ -22,8 +22,10 @@ def print_obj_map(
     d = {team: value_fn(value) if value_fn else value for team, value in items}
     df = pd.DataFrame.from_dict(d, orient="index", columns=value_columns)
 
+    height = (len(df) + 1) * 35 + 2  # adjust for 1px top/bottom borders
+
     st.write(f"##### {title}")
-    st.write(df)
+    st.dataframe(df, height=height, use_container_width=True)
 
 
 def main():
@@ -51,7 +53,6 @@ def main():
     winner = max(win_record.items(), key=win_comparator)[0]
     st.markdown(f"#### :rainbow[{identifier}: {winner}]")
 
-    # st.markdown(f"#### Week {week}")
     print_obj_map(
         title="Wins",
         obj_map=win_record,
