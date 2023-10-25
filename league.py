@@ -142,7 +142,7 @@ class YahooLeague:
             winner, t1_record, t2_record = self._simulate_matchup(teams, t1_name, t2_name)
 
             if winner:
-                win_record[winner][0] += 1
+                win_record[winner] += 1
 
             total_record[t1_name] = [a + b for a, b in zip(t1_record, total_record[t1_name])]
             total_record[t2_name] = [a + b for a, b in zip(t2_record, total_record[t2_name])]
